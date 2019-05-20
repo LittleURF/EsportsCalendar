@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace EsportsCalendar.Models
 {
-    public class Videogame
+    public class Result
     {
-        [JsonProperty("id")]
-        public int Id { get; set; }
-        [JsonProperty("name")]
-        public string Name{ get; set; }
+        [JsonProperty("score")]
+        public int Score { get; set; }
+
+        [JsonProperty("team_id")]
+        public int TeamId { get; set; }
     }
 }

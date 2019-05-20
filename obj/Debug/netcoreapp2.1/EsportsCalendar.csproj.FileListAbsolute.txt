@@ -27,3 +27,4 @@ C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\obj\Debug\netcoreap
 C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\obj\Debug\netcoreapp2.1\EsportsCalendar.dll
 C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\obj\Debug\netcoreapp2.1\EsportsCalendar.pdb
 C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\obj\Debug\netcoreapp2.1\EsportsCalendar.csproj.CopyComplete
+C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CalendarTablePartial.g.cshtml.cs
