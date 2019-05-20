@@ -20,46 +20,20 @@ namespace EsportsCalendar.Controllers
             _pandaApi = pandaApi.GetClient();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string game)
         {
             var request = new RestRequest("/matches/upcoming");
+
+            // The "game" parameter is defined in the Index View when user clicks
+            // to see matches of a specific game, then the request gets changed.
+            if (!String.IsNullOrWhiteSpace(game))
+            {
+                request = new RestRequest("{game}/matches/upcoming");
+                request.AddUrlSegment("game", game);
+            }
+
+
             request.AddQueryParameter("per_page", "8");
-            var result = _pandaApi.Get<List<Match>>(request);
-            var model = result.Data;
-            return View(model);
-        }
-
-        public IActionResult LeagueOfLegends()
-        {
-            var request = new RestRequest("lol/matches/upcoming");
-            request.AddQueryParameter("per_page", "10");
-            var result = _pandaApi.Get<List<Match>>(request);
-            var model = result.Data;
-            return View(model);
-        }
-
-        public IActionResult Dota2()
-        {
-            var request = new RestRequest("dota2/matches/upcoming");
-            request.AddQueryParameter("per_page", "10");
-            var result = _pandaApi.Get<List<Match>>(request);
-            var model = result.Data;
-            return View(model);
-        }
-
-        public IActionResult Overwatch()
-        {
-            var request = new RestRequest("ow/matches/upcoming");
-            request.AddQueryParameter("per_page", "10");
-            var result = _pandaApi.Get<List<Match>>(request);
-            var model = result.Data;
-            return View(model);
-        }
-
-        public IActionResult CSGO()
-        {
-            var request = new RestRequest("csgo/matches/upcoming");
-            request.AddQueryParameter("per_page", "10");
             var result = _pandaApi.Get<List<Match>>(request);
             var model = result.Data;
             return View(model);

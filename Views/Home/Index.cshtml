@@ -11,12 +11,13 @@
 </div>
 <br />
 <div class="row d-flex justify-content-center">
-    <div class="col-sm-8">
+    <div class="col-sm-12 col-lg-9">
         <div class="row d-flex justify-content-between align-content-stretch">
-            <a asp-action="LeagueOfLegends" class="btn btn-primary btn-sharp col-3" role="button">League of Legends</a>
-            <a asp-action="Dota2" class="btn btn-primary btn-sharp col-3" role="button">Dota 2</a>
-            <a asp-action="CSGO" class="btn btn-primary btn-sharp col-3" role="button">CS:GO</a>
-            <a asp-action="Overwatch" class="btn btn-primary btn-sharp col-3" role="button">Overwatch</a>
+            <a asp-route-game="" class="btn btn-primary btn-sharp col-sm-1 col-lg-1" role="button">All</a>
+            <a asp-route-game="lol" class="btn btn-primary btn-sharp col-sm-4 col-lg-3" role="button">League of Legends</a>
+            <a asp-route-game="dota2" class="btn btn-primary btn-sharp col-sm-2 col-lg-2" role="button">Dota 2</a>
+            <a asp-route-game="csgo" class="btn btn-primary btn-sharp col-sm-2 col-lg-3" role="button">CS:GO</a>
+            <a asp-route-game="ow" class="btn btn-primary btn-sharp col-sm-3 col-lg-3" role="button">Overwatch</a>
         </div>
         <div class="row">
             <partial name="_CalendarTablePartial" />

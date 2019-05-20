@@ -1,17 +1,32 @@
 ﻿@model IEnumerable<Match>
 
-<table class="table table-striped" style="background-color: lightgray;">
+<table class="table table-striped" style="background-color: whitesmoke;">
     <tr class="bg-dark text-white">
-        <th>Game</th>
-        <th>Teams</th>
-        <th>Begins At</th>
+        <th style="width: 25%;">Game</th>
+        <th style="width: 30%;">Teams</th>
+        <th style="width: 25%;">Begins At</th>
     </tr>
     @foreach (var match in Model)
     {
         <tr>
-            <td>@match.Videogame.Name</td>
+            <td>
+                @if (match.Videogame.Name == "LoL")
+                {
+                    <span style="font-weight: bold">League Of Legends</span>
+                }
+                else
+                {
+                    <span style="font-weight: bold">@match.Videogame.Name</span>
+                }
+                <br />
+                <span>@match.League.Name</span>
+            </td>
             <td>@match.Name</td>
-            <td>@match.BeginAt.ToString("dd MMMM " + "" + "H:mm", CultureInfo.CreateSpecificCulture("en-US"))</td>
+            <td>
+                <span>@match.BeginAt.ToString("dd MMMM ", CultureInfo.CreateSpecificCulture("en-US"))</span>
+                <br />
+                <span style="font-weight: bolder">@match.BeginAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>
+            </td>
 
         </tr>
     }

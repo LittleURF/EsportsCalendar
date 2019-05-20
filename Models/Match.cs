@@ -20,17 +20,17 @@ namespace EsportsCalendar.Models
         [JsonProperty("forfeit")]
         public bool Forfeit { get; set; }
 
-        ////[JsonProperty("games")]
-        ////public List<Game> Games { get; set; }
+        [JsonProperty("games")]
+        public List<Game> Games { get; set; }
 
         [JsonProperty("id")]
         public int Id { get; set; }
 
-        ////[JsonProperty("league")]
-        ////public League League { get; set; }
+        [JsonProperty("league")]
+        public League League { get; set; }
 
-        ////[JsonProperty("league_id")]
-        ////public long LeagueId { get; set; }
+        [JsonProperty("league_id")]
+        public long LeagueId { get; set; }
 
         [JsonProperty("live")]
         public Live Live { get; set; }
@@ -53,11 +53,11 @@ namespace EsportsCalendar.Models
         [JsonProperty("results")]
         public List<Result> Results { get; set; }
 
-        ////[JsonProperty("serie")]
-        ////public Serie Serie { get; set; }
+        [JsonProperty("serie")]
+        public Serie Serie { get; set; }
 
-        ////[JsonProperty("serie_id")]
-        ////public long SerieId { get; set; }
+        [JsonProperty("serie_id")]
+        public int SerieId { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -65,11 +65,11 @@ namespace EsportsCalendar.Models
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        ////[JsonProperty("tournament")]
-        ////public Tournament Tournament { get; set; }
+        [JsonProperty("tournament")]
+        public Tournament Tournament { get; set; }
 
-        ////[JsonProperty("tournament_id")]
-        ////public long TournamentId { get; set; }
+        [JsonProperty("tournament_id")]
+        public long TournamentId { get; set; }
 
         [JsonProperty("videogame")]
         public Videogame Videogame { get; set; }
