@@ -1,8 +1,40 @@
-﻿@{
+﻿@model IEnumerable<Match>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<br />
 
-<h1>Welcome to Esport Events Center</h1>
-<p>Here you can check every incoming Esport event of LoL, Dota 2, CS:GO and Overwatch!</p>
-<div class="col-sm-6"></div>
+<div class="row d-flex justify-content-center">
+    <h1 class="text-center">Welcome to Esport Events Center</h1>
+    <p class="text-center">Here you can check every incoming Esport event of LoL, Dota 2, CS:GO and Overwatch!</p>
+</div>
+<br />
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-8" style="background-color: lightgray; height: 500px;">
+        <div class="row d-flex justify-content-between align-content-stretch">
+            <a asp-action="Overwatch" class="btn btn-primary btn-sharp col-3" role="button">League of Legends</a>
+            <a asp-action="Overwatch" class="btn btn-primary btn-sharp col-3" role="button">Dota 2</a>
+            <a asp-action="Overwatch" class="btn btn-primary btn-sharp col-3" role="button">CS:GO</a>
+            <a asp-action="Overwatch" class="btn btn-primary btn-sharp col-3" role="button">Overwatch</a>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr class="bg-dark text-white">
+                    <th>Game</th>
+                    <th>Begins At</th>
+                </tr>
+                @foreach (var match in Model)
+                {
+
+                    <tr>
+                        <td>@match.VideoGame.Name</td>
+                        <td>@match.BeginAt</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
 
