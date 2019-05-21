@@ -1,9 +1,10 @@
-﻿@model IEnumerable<Match>
+﻿@model IPagedList<Match>
+
 
 <table class="table table-striped" style="background-color: whitesmoke;">
     <tr class="bg-dark text-white">
         <th style="width: 25%;">Game</th>
-        <th style="width: 30%;">Teams</th>
+        <th style="width: 30%;"></th>
         <th style="width: 25%;">Begins At</th>
     </tr>
     @foreach (var match in Model)

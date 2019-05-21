@@ -7,7 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using EsportsCalendar.Models;
 using EsportsCalendar.Services;
 using RestSharp;
+using X.PagedList;
 
+/*
+ * Persevere the button active state through clicks
+ * 
+ * 
+ * */
 
 namespace EsportsCalendar.Controllers
 {
@@ -20,24 +26,44 @@ namespace EsportsCalendar.Controllers
             _pandaApi = pandaApi.GetClient();
         }
 
-        public IActionResult Index(string game)
+
+
+        public IActionResult Index(string game, string timePeriod, int? page)
         {
-            var request = new RestRequest("/matches/upcoming");
+            var request = new RestRequest("{game}/matches/{timePeriod}");
 
             // The "game" parameter is defined in the Index View when user clicks
-            // to see matches of a specific game, then the request gets changed.
+            // to see matches of a specific game, the request gets changed.
             if (!String.IsNullOrWhiteSpace(game))
             {
-                request = new RestRequest("{game}/matches/upcoming");
                 request.AddUrlSegment("game", game);
+                ViewBag.Game = game;
+            }
+            else
+            {
+                request.AddUrlSegment("game", "");
             }
 
+            if (!String.IsNullOrWhiteSpace(timePeriod))
+            {
+                request.AddUrlSegment("timePeriod", timePeriod);
+                ViewBag.TimePeriod = timePeriod;
+            }
+            else
+            {
+                request.AddUrlSegment("timePeriod", "upcoming");
+            }
 
-            request.AddQueryParameter("per_page", "8");
+            request.AddQueryParameter("per_page", "50");
             var result = _pandaApi.Get<List<Match>>(request);
-            var model = result.Data;
-            return View(model);
+            var model = result.Data.AsQueryable();
+
+
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+            var onePageOfMatches = model.ToPagedList(pageNumber, 6); // will only contain 25 products max because of the pageSize
+            return View(onePageOfMatches);
         }
+
 
 
 
