@@ -12,7 +12,7 @@ namespace EsportsCalendar.Models
         public string Acronym { get; set; }
 
         [JsonProperty("current_videogame")]
-        public string CurrentVideogame { get; set; }
+        public Videogame CurrentVideogame { get; set; }
 
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -24,9 +24,13 @@ namespace EsportsCalendar.Models
         public string Name { get; set; }
 
         [JsonProperty("players")]
-        public Player[] Players { get; set; }
+        public List<Player> Players { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
     }
 }
+// display Opponents details as 2 partial views of each team?
+
+//Team acronym, full name, img
+//Player Full name, imgUrl, Hometown, if role is often specified then that also

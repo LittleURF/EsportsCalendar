@@ -9,19 +9,14 @@ using EsportsCalendar.Services;
 using RestSharp;
 using X.PagedList;
 
-/*
- * Persevere the button active state through clicks
- * 
- * 
- * */
 
 namespace EsportsCalendar.Controllers
 {
-    public class HomeController : Controller
+    public class MatchesController : Controller
     {
         private readonly RestClient _pandaApi;
 
-        public HomeController(IPandaApi pandaApi)
+        public MatchesController(IPandaApi pandaApi)
         {
             _pandaApi = pandaApi.GetClient();
         }
@@ -60,23 +55,8 @@ namespace EsportsCalendar.Controllers
 
 
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfMatches = model.ToPagedList(pageNumber, 6); 
+            var onePageOfMatches = model.ToPagedList(pageNumber, 6);
             return View(onePageOfMatches);
-        }
-
-
-
-
-
-
-
-
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

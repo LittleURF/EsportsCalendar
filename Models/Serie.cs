@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace EsportsCalendar.Models
 {
@@ -20,8 +21,11 @@ namespace EsportsCalendar.Models
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("league")]
+        public League League { get; set; }
+
         [JsonProperty("league_id")]
-        public int  LeagueId { get; set; }
+        public int LeagueId { get; set; }
 
         [JsonProperty("modified_at")]
         public DateTime ModifiedAt { get; set; }
@@ -37,6 +41,12 @@ namespace EsportsCalendar.Models
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
+
+        [JsonProperty("tournaments")]
+        public List<Tournament> Tournaments { get; set; }
+
+        [JsonProperty("videogame")]
+        public Videogame Videogame { get; set; }
 
         [JsonProperty("winner_id")]
         public int WinnerId { get; set; }

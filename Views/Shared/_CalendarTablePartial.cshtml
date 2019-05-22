@@ -3,17 +3,19 @@
 
 <table class="table table-striped" style="background-color: whitesmoke;">
     <tr class="bg-dark text-white">
-        <th style="width: 25%;">Game</th>
+        <th style="width: 25%;"></th>
         <th style="width: 30%;"></th>
-        <th style="width: 25%;">Begins At</th>
+        <th style="width: 15%;"></th>
+        <th style="width: 25%;"></th>
+
     </tr>
     @foreach (var match in Model)
     {
-        <tr>
+        <tr class="">
             <td>
                 @if (match.Videogame.Name == "LoL")
                 {
-                    <span style="font-weight: bold">League Of Legends</span>
+                    <span style="font-weight: bold">League of Legends</span>
                 }
                 else
                 {
@@ -22,9 +24,31 @@
                 <br />
                 <span>@match.League.Name</span>
             </td>
-            <td>@match.Name</td>
             <td>
-                <span>@match.BeginAt.ToString("dd MMMM ", CultureInfo.CreateSpecificCulture("en-US"))</span>
+                @if (match.Opponents.Count() != 2)
+                {
+                    <span style="font-weight: bolder;">@match.Name</span>
+                }
+                else
+                {
+                    <span style="font-weight: bolder;">@match.Opponents[0].Opponent.Name vs @match.Opponents[1].Opponent.Name</span>
+                }
+
+
+            </td>
+            <td>
+                @if (match.Opponents.Count() == 2 && match.Opponents[0].Type == "Team" && match.Opponents[1].Type == "Team")
+                {
+                    <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-controller="teams" asp-action="OpponentsDetails">Details</a>
+                }
+                else
+                {
+                    <span>Inactive</span>
+                }
+
+            </td>
+            <td>
+                <span >@match.BeginAt.ToString("dd MMMM ", CultureInfo.CreateSpecificCulture("en-US"))</span>
                 <br />
                 <span style="font-weight: bolder">@match.BeginAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>
             </td>

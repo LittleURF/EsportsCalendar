@@ -33,3 +33,5 @@ namespace EsportsCalendar.Models
         public string Slug { get; set; }
     }
 }
+
+//Player Full name, imgUrl, Hometown, if role is often specified then that also
