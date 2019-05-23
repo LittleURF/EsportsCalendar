@@ -54,9 +54,10 @@ namespace EsportsCalendar.Controllers
             }
 
             teams.AsQueryable();
+            var orderedTeams = teams.OrderBy(t => t.Name);
 
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfTeams = teams.ToPagedList(pageNumber, 10);
+            var onePageOfTeams = orderedTeams.ToPagedList(pageNumber, 10);
             return View(onePageOfTeams);
         }
 
@@ -64,7 +65,9 @@ namespace EsportsCalendar.Controllers
         {
             var request = new RestRequest("teams/{teamId}");
             request.AddUrlSegment("teamId", teamId);
-            var team1 = _pandaApi.Get<Team>(request).Data;
+            var team = _pandaApi.Get<Team>(request).Data;
+
+            return View(team);
         }
 
         public IActionResult OpponentsDetails(int teamId1, int teamId2)
@@ -73,7 +76,11 @@ namespace EsportsCalendar.Controllers
             request.AddUrlSegment("teamId", teamId1);
             var team1 = _pandaApi.Get<Team>(request).Data;
 
-            var team2 = _pandaApi.Get<Team>(new RestRequest("teams/{teamId}").AddUrlSegment("teamId", teamId2)).Data;
+
+            var request2 = new RestRequest("teams/{teamId}");
+            request2.AddUrlSegment("teamId", teamId2);
+            var team2 = _pandaApi.Get<Team>(request2).Data;
+
 
             var teams = new List<Team>() { team1, team2 };
             return View(teams);

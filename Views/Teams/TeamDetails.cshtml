@@ -1,0 +1,16 @@
+﻿@model EsportsCalendar.Models.Team
+@{
+    ViewData["Title"] = "TeamDetails";
+}
+
+<br />
+<div class="row d-flex justify-content-center">
+    <h1 class="text-center w-100">Team Details</h1>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-lg-7 m-auto">
+        <partial model="Model" name="_TeamDetailsPartialView" />
+    </div>
+</div>
