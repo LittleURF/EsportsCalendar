@@ -6,6 +6,7 @@ using EsportsCalendar.Models;
 using EsportsCalendar.Services;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
+using X.PagedList;
 
 namespace EsportsCalendar.Controllers
 {
@@ -19,17 +20,51 @@ namespace EsportsCalendar.Controllers
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var request = new RestRequest("teams");
-            request.AddQueryParameter("per_page", "100");
-            request.AddQueryParameter("sort", "name");
+            var teams = new List<Team>();
 
-            var result = _pandaApi.Get<List<Team>>(request);
-            var model = result.Data;
+            var tournamentRequest = new RestRequest("tournaments/upcoming");
+            tournamentRequest.AddQueryParameter("per_page", "18");
+            var tournaments =  await _pandaApi.GetAsync<List<Tournament>>(tournamentRequest);
 
 
-            return View(model);
+            //var teamsRequest = new RestRequest("tournaments/2349/teams");
+            //teamsRequest.AddQueryParameter("tournamentId", "2349");
+            //var tournamentTeams = await _pandaApi.GetAsync<List<object>>(teamsRequest);
+
+
+
+            foreach (var tournament in tournaments)
+            {
+                var teamsRequest = new RestRequest("tournaments/{tournamentId}/teams");
+                teamsRequest.AddUrlSegment("tournamentId", tournament.Id.ToString());
+                var tournamentTeams = await _pandaApi.GetAsync<List<Team>>(teamsRequest);
+
+
+                foreach (var team in tournamentTeams)
+                {
+                    if (teams.Contains(team)) { }
+                    else
+                    {
+                        teams.Add(team);
+                    }
+
+                }
+            }
+
+            teams.AsQueryable();
+
+            var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
+            var onePageOfTeams = teams.ToPagedList(pageNumber, 10);
+            return View(onePageOfTeams);
+        }
+
+        public IActionResult TeamDetails(int teamId)
+        {
+            var request = new RestRequest("teams/{teamId}");
+            request.AddUrlSegment("teamId", teamId);
+            var team1 = _pandaApi.Get<Team>(request).Data;
         }
 
         public IActionResult OpponentsDetails(int teamId1, int teamId2)

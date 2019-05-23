@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EsportsCalendar.Models.Team>
+﻿@model IPagedList<EsportsCalendar.Models.Team>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,46 +9,45 @@
     <p class="text-center">Here you can find details about the most popular teams and check when do they play!</p>
 </div>
 <br />
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CurrentVideogame.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Slug)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var team in Model)
-        {
-        <tr>
-            <td>
-                @if (team.CurrentVideogame.Name == "LoL")
+<div class="row">
+    <div class=" m-auto col-lg-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Game </th>
+                    <th>Team Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var team in Model)
                 {
-                    <span>League of Legends</span>
+                    <tr>
+                        <td>
+                            @if (team.CurrentVideogame.Name == "LoL")
+                            {
+                                <span>League of Legends</span>
+                            }
+                            else
+                            {
+                                @team.CurrentVideogame.Name
+                            }
+                        </td>
+                        <td>
+                            @team.Name
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+                        </td>
+                    </tr>
                 }
-                else
-                {
-                    @team.CurrentVideogame.Name
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => team.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => team.Slug)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+            </tbody>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { game = ViewBag.Game, timePeriod = ViewBag.TimePeriod, page = page }),
+new X.PagedList.Mvc.Common.PagedListRenderOptionsBase {
+UlElementClasses = new string[] { " pagination justify-content-center" },
+LiElementClasses = new string[] { "page-item" },
+PageClasses = new string[] { "page-link" }
+})
+    </div>
+</div>

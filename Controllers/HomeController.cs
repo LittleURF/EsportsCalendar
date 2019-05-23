@@ -10,8 +10,14 @@ using RestSharp;
 using X.PagedList;
 
 /*
- * Persevere the button active state through clicks
+ * Make the home page show something different than the matches table, maybe a part of it but also something more
+ * Do something at the Teams page, maybe a search box for a team? would that work tho?
  * 
+ * Teams page list all teams that take part in the upcoming events
+ * So i have to take all upcoming events, and take their players into a list but make sure they do not repeat
+ * Then i can either display the whole list or save the list as an array and let users make LINQ Queries to run against it and find their team. Mostly through name.
+ * 
+ * Both involve making around 10-15 requests to the server, can i change it?
  * 
  * */
 

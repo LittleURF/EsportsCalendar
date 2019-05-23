@@ -28,9 +28,9 @@ namespace EsportsCalendar.Controllers
             var model = result.Data.AsQueryable();
 
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfMatches = model.ToPagedList(pageNumber, 6);
+            var onePageOfTournaments = model.ToPagedList(pageNumber, 6);
 
-            return View(onePageOfMatches);
+            return View(onePageOfTournaments);
         }
     }
 }
