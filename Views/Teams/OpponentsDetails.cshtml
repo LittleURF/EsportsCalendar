@@ -5,6 +5,22 @@
 }
 <br />
 <div class="row d-flex justify-content-center">
-    <h1 class="text-center w-100">Details</h1>
+    <h1 class="text-center w-100">Teams Details</h1>
 </div>
 <br />
+
+<div class="row d-flex justify-content-center align-items-center">
+
+    @foreach (var team in Model)
+    {
+        <div class="col-sm-12 col-lg-5">
+            <partial model="team" name="_TeamDetailsPartialView" />
+        </div>
+        @if (Model.First() == team)
+        {
+            <div class="col-1">
+                <span  style="font-size: 60px;">VS</span>
+            </div>
+        }
+    }
+</div>

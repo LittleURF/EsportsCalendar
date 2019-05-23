@@ -30,7 +30,3 @@ namespace EsportsCalendar.Models
         public string Slug { get; set; }
     }
 }
-// display Opponents details as 2 partial views of each team?
-
-//Team acronym, full name, img
-//Player Full name, imgUrl, Hometown, if role is often specified then that also

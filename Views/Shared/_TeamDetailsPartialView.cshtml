@@ -1,0 +1,45 @@
+﻿@model EsportsCalendar.Models.Team
+
+<div>
+    <div class="card text-center d-flex justify-content-center h-100">
+
+
+        @{ var imgSrc = (String.IsNullOrWhiteSpace(Model.ImageUrl)) ? @"images/ImgNotFound.png" : Model.ImageUrl; }
+        <img class="card-img-top mt-1" style="height: 100px; object-fit: contain;" src="@imgSrc" />
+
+
+        <div class="card-body">
+            <h3 class="text-muted">
+                @if (Model.Acronym != @Model.Name && Model.Acronym != null)
+                {
+                    <span>@Model.Acronym</span>
+                }
+                else
+                {
+                    <span style="white-space: pre;"> </span>
+                }
+            </h3>
+            <h2 class="card-title">@Model.Name</h2>
+            <h6 class="card-subtitle text-muted">
+                @{var gameName = Model.CurrentVideogame.Name == "LoL" ? "League of Legends" : Model.CurrentVideogame.Name;}
+                <span>@gameName</span>
+            </h6>
+            <br />
+            @if (Model.Players.Count() == 0)
+            {
+                <span>Players info not found</span>
+            }
+            else
+            {
+                <ul class="list-group list-unstyled" style="border-top:1px solid #e0e0e0">
+                    @foreach (var player in Model.Players)
+                    {
+                        <li class="font-weight-bold mt-3">@player.Name</li>
+                        <li class="text-muted">@player.Hometown</li>
+                    }
+                </ul>
+            }
+
+        </div>
+    </div>
+</div>

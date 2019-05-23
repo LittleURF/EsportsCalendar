@@ -1,18 +1,11 @@
 ﻿@model IPagedList<Match>
 
 
-<table class="table table-striped" style="background-color: whitesmoke;">
-    <tr class="bg-dark text-white">
-        <th style="width: 25%;"></th>
-        <th style="width: 30%;"></th>
-        <th style="width: 15%;"></th>
-        <th style="width: 25%;"></th>
-
-    </tr>
+<table class="table table-striped" style="background-color: ghostwhite;">
     @foreach (var match in Model)
     {
         <tr class="">
-            <td>
+            <td style="width: 25%;">
                 @if (match.Videogame.Name == "LoL")
                 {
                     <span style="font-weight: bold">League of Legends</span>
@@ -24,7 +17,7 @@
                 <br />
                 <span>@match.League.Name</span>
             </td>
-            <td>
+            <td style="width: 30%;">
                 @if (match.Opponents.Count() != 2)
                 {
                     <span style="font-weight: bolder;">@match.Name</span>
@@ -36,7 +29,7 @@
 
 
             </td>
-            <td>
+            <td style="width: 15%;">
                 @if (match.Opponents.Count() == 2 && match.Opponents[0].Type == "Team" && match.Opponents[1].Type == "Team")
                 {
                     <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-controller="teams" asp-action="OpponentsDetails">Details</a>
@@ -47,7 +40,7 @@
                 }
 
             </td>
-            <td>
+            <td style="width: 25%;">
                 <span >@match.BeginAt.ToString("dd MMMM ", CultureInfo.CreateSpecificCulture("en-US"))</span>
                 <br />
                 <span style="font-weight: bolder">@match.BeginAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>
