@@ -9,7 +9,8 @@ namespace EsportsCalendar.ViewModels
 {
     public class TeamSearchModel
     {
-        public IPagedList<Match> Matches { get; set; }
+        public List<Team> Teams { get; set; }
         public string SearchString { get; set; }
+        public IPagedList<Team> PageOfTeams { get; set; }
     }
 }

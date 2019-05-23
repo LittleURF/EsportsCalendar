@@ -24,27 +24,32 @@ using EsportsCalendar.Models;
 #line default
 #line hidden
 #line 3 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using System.Globalization;
+using EsportsCalendar.ViewModels;
 
 #line default
 #line hidden
 #line 4 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using X.PagedList.Mvc.Core;
+using System.Globalization;
 
 #line default
 #line hidden
 #line 5 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using X.PagedList;
+using X.PagedList.Mvc.Core;
 
 #line default
 #line hidden
 #line 6 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#line 7 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
 using RestSharp;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b3409b17532aebc99380bb9f5a980b1795075ef2", @"/Views/Teams/TeamDetails.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6d6d59a37f1eabcc65e8ae401ae9e9e818a67618", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1e72b0811e6e3628adb7cd820726f3f6cac6b005", @"/Views/_ViewImports.cshtml")]
     public class Views_Teams_TeamDetails : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<EsportsCalendar.Models.Team>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("name", "_TeamDetailsPartialView", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -80,7 +85,7 @@ using RestSharp;
             WriteLiteral("\r\n<br />\r\n<div class=\"row d-flex justify-content-center\">\r\n    <h1 class=\"text-center w-100\">Team Details</h1>\r\n</div>\r\n<br />\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-lg-7 m-auto\">\r\n        ");
             EndContext();
             BeginContext(275, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8f209f4c45604110b79aaed1cc305f65", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1cf3369043704878b67c2e45daf73922", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

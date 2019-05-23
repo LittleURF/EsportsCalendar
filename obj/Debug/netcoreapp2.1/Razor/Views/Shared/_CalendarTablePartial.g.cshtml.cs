@@ -24,27 +24,32 @@ using EsportsCalendar.Models;
 #line default
 #line hidden
 #line 3 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using System.Globalization;
+using EsportsCalendar.ViewModels;
 
 #line default
 #line hidden
 #line 4 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using X.PagedList.Mvc.Core;
+using System.Globalization;
 
 #line default
 #line hidden
 #line 5 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
-using X.PagedList;
+using X.PagedList.Mvc.Core;
 
 #line default
 #line hidden
 #line 6 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
+using X.PagedList;
+
+#line default
+#line hidden
+#line 7 "C:\Users\Hubert\source\repos\EsportsCalendar\EsportsCalendar\Views\_ViewImports.cshtml"
 using RestSharp;
 
 #line default
 #line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"56a0a89a4d1b36c7a22b09d667e23414ce10eab0", @"/Views/Shared/_CalendarTablePartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6d6d59a37f1eabcc65e8ae401ae9e9e818a67618", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1e72b0811e6e3628adb7cd820726f3f6cac6b005", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__CalendarTablePartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IPagedList<Match>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "teams", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -197,7 +202,7 @@ using RestSharp;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(1234, 171, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c387f09e02d475c90d80db37a89f93f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f9024503666946489adb73f125752b56", async() => {
                 BeginContext(1394, 7, true);
                 WriteLiteral("Details");
                 EndContext();

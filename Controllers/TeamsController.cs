@@ -20,8 +20,7 @@ namespace EsportsCalendar.Controllers
             _pandaApi = pandaApi.GetClient();
         }
 
-        private readonly List<Team> teams = new List<Team>();
-
+        public List<Team> teams = new List<Team>();
 
         public async Task<IActionResult> Index(int? page)
         {
@@ -51,12 +50,16 @@ namespace EsportsCalendar.Controllers
                 }
             }
 
-            teams.AsQueryable();
-            var orderderTeams =  teams.OrderBy(t => t.Name).GroupBy(t => t.Id).Select(t => t.First());
-            
+            var orderderTeams = teams.OrderBy(t => t.Name).GroupBy(t => t.Id).Select(t => t.First());
+
+
+            var t2 = teams.AsQueryable();
+
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
             var onePageOfTeams = orderderTeams.ToPagedList(pageNumber, 10);
-            return View(onePageOfTeams);
+
+            var model = new TeamSearchModel() { Teams = orderderTeams.ToList(), PageOfTeams = onePageOfTeams };
+            return View(model);
         }
 
         public IActionResult TeamDetails(int teamId)
@@ -85,16 +88,22 @@ namespace EsportsCalendar.Controllers
         }
 
 
-        // display different route
+        //display different route
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SearchTeamByName(TeamSearchModel model)
         {
-            string search = model.SearchString;
-
-            foreach (var team in model.Matches)
+            foreach (var team in model.Teams)
             {
-                if(team.Name.Contains)
+                if (team.Name.ToLower().Contains(model.SearchString.ToLower()))
+                {
+
+                    return RedirectToAction(nameof(TeamDetails), new { teamId = team.Id});
+                }
             }
-            return RedirectToAction("TeamDetails", teamId);
+            TempData["Error Message"] = "Could not find a team with this name in the database";
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }

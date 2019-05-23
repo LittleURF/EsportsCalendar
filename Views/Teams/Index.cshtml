@@ -1,9 +1,15 @@
-﻿@model IPagedList<EsportsCalendar.Models.Team>
+﻿@model EsportsCalendar.ViewModels.TeamSearchModel
 
 @{
     ViewData["Title"] = "Index";
 }
 <br />
+@if (TempData["Error Message"] != null)
+{
+    <div class="col-lg-8 m-auto">
+        <partial name="_ErrorMessagePartial" />
+    </div>
+}
 <div class="row form-group d-flex justify-content-center">
     <h1 class="text-center w-100">Teams</h1>
     <p class="text-center">Here you can find details about the most popular teams and check when do they play!</p>
@@ -14,9 +20,16 @@
     <h6 class="text-center col-12">Find your team</h6>
 </div>
 
-<form method="post" asp-action="SearchTeamByName">
+<form method="post" asp-controller="Teams" asp-action="SearchTeamByName">
+
+    @for (int i = 0; i < Model.Teams.Count; i++)
+    {
+        <input type="hidden" asp-for="@Model.Teams[i].Id" />
+        <input type="hidden" asp-for="@Model.Teams[i].Name" />
+    }
+
     <div class="row mb-2">
-        <input type="text" placeholder="Teams Name" class="form-control m-auto col-lg-6" />
+        <input name="searchString" type="text" placeholder="Teams Name" class="form-control m-auto col-lg-6" />
     </div>
     <div class="row">
         <button type="submit" class="btn btn-success m-auto">Search</button>
@@ -35,7 +48,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var team in Model)
+                @foreach (var team in Model.PageOfTeams)
                 {
                     <tr>
                         <td>
@@ -58,7 +71,7 @@
                 }
             </tbody>
         </table>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { game = ViewBag.Game, timePeriod = ViewBag.TimePeriod, page = page }),
+        @Html.PagedListPager(Model.PageOfTeams, page => Url.Action("Index", new { game = ViewBag.Game, timePeriod = ViewBag.TimePeriod, page = page }),
 new X.PagedList.Mvc.Common.PagedListRenderOptionsBase {
 UlElementClasses = new string[] { " pagination justify-content-center" },
 LiElementClasses = new string[] { "page-item" },
