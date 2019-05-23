@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EsportsCalendar.Models;
 using EsportsCalendar.Services;
+using EsportsCalendar.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using RestSharp;
 using X.PagedList;
@@ -19,6 +20,8 @@ namespace EsportsCalendar.Controllers
             _pandaApi = pandaApi.GetClient();
         }
 
+        private readonly List<Team> teams = new List<Team>();
+
 
         public async Task<IActionResult> Index(int? page)
         {
@@ -26,7 +29,7 @@ namespace EsportsCalendar.Controllers
 
             var tournamentRequest = new RestRequest("tournaments/upcoming");
             tournamentRequest.AddQueryParameter("per_page", "18");
-            var tournaments =  await _pandaApi.GetAsync<List<Tournament>>(tournamentRequest);
+            var tournaments = await _pandaApi.GetAsync<List<Tournament>>(tournamentRequest);
 
 
             //var teamsRequest = new RestRequest("tournaments/2349/teams");
@@ -44,20 +47,15 @@ namespace EsportsCalendar.Controllers
 
                 foreach (var team in tournamentTeams)
                 {
-                    if (teams.Contains(team)) { }
-                    else
-                    {
-                        teams.Add(team);
-                    }
-
+                    teams.Add(team);
                 }
             }
 
             teams.AsQueryable();
-            var orderedTeams = teams.OrderBy(t => t.Name);
-
+            var orderderTeams =  teams.OrderBy(t => t.Name).GroupBy(t => t.Id).Select(t => t.First());
+            
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfTeams = orderedTeams.ToPagedList(pageNumber, 10);
+            var onePageOfTeams = orderderTeams.ToPagedList(pageNumber, 10);
             return View(onePageOfTeams);
         }
 
@@ -84,6 +82,19 @@ namespace EsportsCalendar.Controllers
 
             var teams = new List<Team>() { team1, team2 };
             return View(teams);
+        }
+
+
+        // display different route
+        public IActionResult SearchTeamByName(TeamSearchModel model)
+        {
+            string search = model.SearchString;
+
+            foreach (var team in model.Matches)
+            {
+                if(team.Name.Contains)
+            }
+            return RedirectToAction("TeamDetails", teamId);
         }
     }
 }

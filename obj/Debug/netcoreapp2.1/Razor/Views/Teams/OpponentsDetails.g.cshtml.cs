@@ -92,7 +92,7 @@ using RestSharp;
             WriteLiteral("        <div class=\"col-sm-12 col-lg-5\">\r\n            ");
             EndContext();
             BeginContext(397, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c6899d978db64b44abac8fd16a4295f6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d8910b2dc398445b9dc31df80d0c32d7", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

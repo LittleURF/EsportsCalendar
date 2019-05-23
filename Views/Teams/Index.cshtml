@@ -4,19 +4,34 @@
     ViewData["Title"] = "Index";
 }
 <br />
-<div class="row d-flex justify-content-center">
+<div class="row form-group d-flex justify-content-center">
     <h1 class="text-center w-100">Teams</h1>
     <p class="text-center">Here you can find details about the most popular teams and check when do they play!</p>
 </div>
+<br />
+<div class="row mb-2">
+    <div class="col-12"></div>
+    <h6 class="text-center col-12">Find your team</h6>
+</div>
+
+<form method="post" asp-action="SearchTeamByName">
+    <div class="row mb-2">
+        <input type="text" placeholder="Teams Name" class="form-control m-auto col-lg-6" />
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-success m-auto">Search</button>
+    </div>
+</form>
+
 <br />
 <div class="row">
     <div class=" m-auto col-lg-9">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Game </th>
-                    <th>Team Name</th>
-                    <th></th>
+                    <th class="border-top-0">Game </th>
+                    <th class="border-top-0">Team Name</th>
+                    <th class="border-top-0"></th>
                 </tr>
             </thead>
             <tbody>

@@ -103,7 +103,7 @@ using RestSharp;
             ");
             EndContext();
             BeginContext(442, 189, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "77844b3bd8654569a631fe177fdf5a5d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eee17eaf7f9e40d4a91f89ed319ce280", async() => {
                 BeginContext(615, 12, true);
                 WriteLiteral("Past Matches");
                 EndContext();
@@ -155,7 +155,7 @@ AddHtmlAttributeValue(" ", 551, ViewBag.TimePeriod == "past" ? "active" : "", 55
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(645, 231, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0116bb2f15e54e29be5a8c60b5397669", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2bc7fd7ff757410c94fbb5610737c528", async() => {
                 BeginContext(856, 16, true);
                 WriteLiteral("Upcoming Matches");
                 EndContext();
@@ -207,7 +207,7 @@ AddHtmlAttributeValue(" ", 758, ViewBag.TimePeriod == "upcoming" || ViewBag.Time
             WriteLiteral("\r\n        </div>\r\n        <div class=\"row d-flex justify-content-between align-content-stretch\">\r\n            ");
             EndContext();
             BeginContext(986, 192, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26c18b2e34f54152b6c0e6f988f9f4b8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71fe6bd05f5d4bd585c941ee848f6a21", async() => {
                 BeginContext(1171, 3, true);
                 WriteLiteral("All");
                 EndContext();
@@ -260,7 +260,7 @@ AddHtmlAttributeValue(" ", 1115, ViewBag.Game == null ? "active" : "", 1116, 39,
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(1192, 210, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7d3fc0f896d4b8d8670060d7b7ef8cf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6d42112017a548169edb8db9a8a258ed", async() => {
                 BeginContext(1381, 17, true);
                 WriteLiteral("League of Legends");
                 EndContext();
@@ -313,7 +313,7 @@ AddHtmlAttributeValue(" ", 1324, ViewBag.Game == "lol" ? "active" : "", 1325, 40
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(1416, 203, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23a71dde3c5d4db18a9b95fe3841a82d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ecd6bef1daf94be8a92779fd861ee47b", async() => {
                 BeginContext(1609, 6, true);
                 WriteLiteral("Dota 2");
                 EndContext();
@@ -366,7 +366,7 @@ AddHtmlAttributeValue(" ", 1550, ViewBag.Game == "dota2" ? "active" : "", 1551, 
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(1633, 200, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e5a5072ce11478e995c237e92b7b43a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3d070b55365c404695951a20b6fef17b", async() => {
                 BeginContext(1824, 5, true);
                 WriteLiteral("CS:GO");
                 EndContext();
@@ -419,7 +419,7 @@ AddHtmlAttributeValue(" ", 1766, ViewBag.Game == "csgo" ? "active" : "", 1767, 4
             WriteLiteral("\r\n            ");
             EndContext();
             BeginContext(1847, 200, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d67d726b76546059818b9a6b151dd64", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4a3491175b240ed82d0a81581e9e2f6", async() => {
                 BeginContext(2034, 9, true);
                 WriteLiteral("Overwatch");
                 EndContext();
@@ -472,7 +472,7 @@ AddHtmlAttributeValue(" ", 1978, ViewBag.Game == "ow" ? "active" : "", 1979, 39,
             WriteLiteral("\r\n        </div>\r\n        <div class=\"row\">\r\n            ");
             EndContext();
             BeginContext(2104, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "469d7a1caf5f4fb6bc5c37fb4f584396", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "109e08adf5dd4395be153c2e43f489e3", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

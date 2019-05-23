@@ -80,7 +80,7 @@ using RestSharp;
             WriteLiteral("\r\n<br />\r\n<div class=\"row d-flex justify-content-center\">\r\n    <h1 class=\"text-center w-100\">Team Details</h1>\r\n</div>\r\n<br />\r\n\r\n<div class=\"row\">\r\n    <div class=\"col-lg-7 m-auto\">\r\n        ");
             EndContext();
             BeginContext(275, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0b88cfc52fa74118be3f944e50e13b2b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8f209f4c45604110b79aaed1cc305f65", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();
