@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EsportsCalendar.Models;
 using EsportsCalendar.Services;
@@ -100,10 +101,20 @@ namespace EsportsCalendar.Controllers
 
                     return RedirectToAction(nameof(TeamDetails), new { teamId = team.Id});
                 }
+                else
+                {
+                    // This regex removes ' ./_-' characters 
+                    string teamNameTrimmed = Regex.Replace(team.Name, "([ .,_-])", String.Empty).ToLower();
+                    string searchStringTrimmed = Regex.Replace(model.SearchString, "([ .,_-])", String.Empty).ToLower();
+
+                    if (teamNameTrimmed.Contains(searchStringTrimmed))
+                    {
+                        return RedirectToAction(nameof(TeamDetails), new { teamId = team.Id });
+                    }
+                }
             }
             TempData["Error Message"] = "Could not find a team with this name in the database";
             return RedirectToAction(nameof(Index));
-
         }
     }
 }

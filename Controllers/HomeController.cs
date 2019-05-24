@@ -11,16 +11,12 @@ using X.PagedList;
 
 /*
  * Make the home page show something different than the matches table, maybe a part of it but also something more
- * Do something at the Teams page, maybe a search box for a team? would that work tho?
- * 
- * Make the search engine a little bit smarter, find teams with extra/without spaces/ make it not case sensitive
- * 
- * Add a Back to Index button on the team details page
- * 
- * back to matches button in opponents details page?
  * 
  * Getting the team list takes too many requests, its super slow, try to fix it
  * 
+ * Make the matches table NAV menu a dropdown
+ * 
+ * Redo the nav to something else, lets not be THAT basic
  * */
 
 namespace EsportsCalendar.Controllers

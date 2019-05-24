@@ -32,7 +32,7 @@
             <td style="width: 15%;">
                 @if (match.Opponents.Count() == 2 && match.Opponents[0].Type == "Team" && match.Opponents[1].Type == "Team")
                 {
-                    <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-controller="teams" asp-action="OpponentsDetails">Details</a>
+                    <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-route-game="@ViewBag.Game" asp-route-timePeriod="@ViewBag.TimePeriod" asp-controller="teams" asp-action="OpponentsDetails">Details</a>
                 }
                 else
                 {
