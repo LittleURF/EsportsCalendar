@@ -13,8 +13,6 @@ using X.PagedList;
  * Getting the team list takes too many requests, its super slow, try to fix it
  * 
  * Make the matches table NAV menu a dropdown
- * 
- * Details button into an image next to the teams
  * */
 
 namespace EsportsCalendar.Controllers
