@@ -12,7 +12,6 @@
 </div>
 
 <div class="row d-flex justify-content-center">
-    <p class="text-center">It's a small project created with ASP.NET Core 2.1 based on a Public API</p>
 </div>
 <br />
 <div class="row d-flex justify-content-center">
@@ -22,14 +21,61 @@
             <a asp-route-game="@ViewBag.Game" asp-route-timePeriod="upcoming" class="btn btn-info btn-sharp col-sm-4 col-lg-3 @(ViewBag.TimePeriod == "upcoming" || ViewBag.TimePeriod == null ? "active" : "")" role="button">Upcoming Matches</a>
         </div>
         <div class="row d-flex justify-content-between align-content-stretch">
-            <a asp-route-game="" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-sharp col-sm-1 col-lg-1 @(ViewBag.Game == null ? "active" : "")" role="button">All</a>
-            <a asp-route-game="lol" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-sharp col-sm-4 col-lg-3 @(ViewBag.Game == "lol" ? "active" : "")" role="button">League of Legends</a>
-            <a asp-route-game="dota2" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-sharp col-sm-2 col-lg-2 @(ViewBag.Game == "dota2" ? "active" : "")" role="button">Dota 2</a>
-            <a asp-route-game="csgo" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-sharp col-sm-2 col-lg-3 @(ViewBag.Game == "csgo" ? "active" : "")" role="button">CS:GO</a>
-            <a asp-route-game="ow" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-sharp col-sm-3 col-lg-3 @(ViewBag.Game == "ow" ? "active" : "")" role="button">Overwatch</a>
+            <a asp-route-game="" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-1 col-lg-1 @(ViewBag.Game == null ? "active" : "")" role="button">All</a>
+            <a asp-route-game="lol" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-4 col-lg-3 @(ViewBag.Game == "lol" ? "active" : "")" role="button">League of Legends</a>
+            <a asp-route-game="dota2" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-2 col-lg-2 @(ViewBag.Game == "dota2" ? "active" : "")" role="button">Dota 2</a>
+            <a asp-route-game="csgo" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-2 col-lg-3 @(ViewBag.Game == "csgo" ? "active" : "")" role="button">CS:GO</a>
+            <a asp-route-game="ow" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-3 col-lg-3 @(ViewBag.Game == "ow" ? "active" : "")" role="button">Overwatch</a>
         </div>
         <div class="row">
-            <partial name="_CalendarTablePartial" />
+            <table class="table table-striped" style="background-color: ghostwhite;">
+                @foreach (var match in Model)
+                {
+                    <tr class="">
+                        <td style="width: 25%;">
+                            @if (match.Videogame.Name == "LoL")
+                            {
+                                <span style="font-weight: bold">League of Legends</span>
+                            }
+                            else
+                            {
+                                <span style="font-weight: bold">@match.Videogame.Name</span>
+                            }
+                            <br />
+                            <span>@match.League.Name</span>
+                        </td>
+                        <td style="width: 30%;">
+                            @if (match.Opponents.Count() != 2)
+                            {
+                                <span style="font-weight: bolder;">@match.Name</span>
+                            }
+                            else
+                            {
+                                <span style="font-weight: bolder;">@match.Opponents[0].Opponent.Name vs @match.Opponents[1].Opponent.Name</span>
+                            }
+
+
+                        </td>
+                        <td style="width: 15%;">
+                            @if (match.Opponents.Count() == 2 && match.Opponents[0].Type == "Team" && match.Opponents[1].Type == "Team")
+                            {
+                                <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-route-game="@ViewBag.Game" asp-route-timePeriod="@ViewBag.TimePeriod" asp-controller="teams" asp-action="OpponentsDetails">Details</a>
+                            }
+                            else
+                            {
+                                <span>Inactive</span>
+                            }
+
+                        </td>
+                        <td style="width: 25%;">
+                            <span>@match.BeginAt.ToString("dd MMMM ", CultureInfo.CreateSpecificCulture("en-US"))</span>
+                            <br />
+                            <span style="font-weight: bolder">@match.BeginAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>
+                        </td>
+
+                    </tr>
+                }
+            </table>
         </div>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { game = ViewBag.Game, timePeriod = ViewBag.TimePeriod, page = page }),
     new X.PagedList.Mvc.Common.PagedListRenderOptionsBase {

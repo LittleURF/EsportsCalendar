@@ -4,7 +4,7 @@
     <div class="card bg-light text-center d-flex justify-content-center h-100">
 
 
-        @{ var imgSrc = (String.IsNullOrWhiteSpace(Model.ImageUrl)) ? @"images/ImgNotFound.png" : Model.ImageUrl; }
+        @{ var imgSrc = (String.IsNullOrWhiteSpace(Model.ImageUrl)) ? "/images/ImgNotFound.png" : Model.ImageUrl; }
         <img class="card-img-top mt-1" style="height: 100px; object-fit: contain;" src="@imgSrc" />
 
 

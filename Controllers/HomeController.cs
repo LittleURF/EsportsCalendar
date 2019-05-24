@@ -10,13 +10,11 @@ using RestSharp;
 using X.PagedList;
 
 /*
- * Make the home page show something different than the matches table, maybe a part of it but also something more
- * 
  * Getting the team list takes too many requests, its super slow, try to fix it
  * 
  * Make the matches table NAV menu a dropdown
  * 
- * Redo the nav to something else, lets not be THAT basic
+ * Details button into an image next to the teams
  * */
 
 namespace EsportsCalendar.Controllers
