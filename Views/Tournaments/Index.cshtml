@@ -7,8 +7,8 @@
 <br />
 
 <div class="row d-flex justify-content-center">
-    <h1 class="text-center w-100">Tournaments</h1>
-    <p class="text-center">The biggest tournaments you should look out for in the nearest future!</p>
+    <h1 class="text-center text-light w-100 display-3">Tournaments</h1>
+    <p class="text-center text-light" style="font-size: 120%;">The biggest tournaments you should look out for in the nearest future!</p>
 </div>
 
 <br />
@@ -17,7 +17,7 @@
         @foreach (var tournament in Model)
         {
             <div class="col-md-6 col-lg-4 mb-5">
-                <div class="card text-center d-flex justify-content-center h-100">
+                <div class="card bg-light text-center d-flex justify-content-center h-100">
 
 
                     @{ var imgSrc = (String.IsNullOrWhiteSpace(tournament.League.ImageUrl)) ? @"images/ImgNotFound.png" : tournament.League.ImageUrl; }
@@ -57,17 +57,9 @@
         }
     </div>
 </div>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }),
+@Html.PagedListPager(Model, page => Url.Action("Index", new { game = ViewBag.Game, timePeriod = ViewBag.TimePeriod, page = page }),
 new X.PagedList.Mvc.Common.PagedListRenderOptionsBase {
 UlElementClasses = new string[] { " pagination justify-content-center" },
 LiElementClasses = new string[] { "page-item" },
-PageClasses = new string[] { "page-link" }
+PageClasses = new string[] { "page-link text-dark" }
 })
-
-@*<span style="font-weight: bolder">@tournament.BeginAt.ToString("dd MMMM yyyy ", CultureInfo.CreateSpecificCulture("en-US"))</span>
-    <br />
-    <span style="font-weight: bolder">@tournament.BeginAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>
-    <td>
-        <span style="font-weight: bolder">@tournament.EndAt.ToString("dd MMMM yyyy", CultureInfo.CreateSpecificCulture("en-US"))</span>
-        <br />
-        <span style="font-weight: bolder">@tournament.EndAt.ToString("H:mm", CultureInfo.CreateSpecificCulture("en-US"))</span>*@

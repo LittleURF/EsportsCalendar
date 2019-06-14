@@ -32,29 +32,32 @@ namespace EsportsCalendar.Controllers
             var tournaments = await _pandaApi.GetAsync<List<Tournament>>(tournamentRequest);
 
 
-            //var teamsRequest = new RestRequest("tournaments/2349/teams");
-            //teamsRequest.AddQueryParameter("tournamentId", "2349");
-            //var tournamentTeams = await _pandaApi.GetAsync<List<object>>(teamsRequest);
-
-
+            var tasks = new List<Task<List<Team>>>();
 
             foreach (var tournament in tournaments)
             {
                 var teamsRequest = new RestRequest("tournaments/{tournamentId}/teams");
                 teamsRequest.AddUrlSegment("tournamentId", tournament.Id.ToString());
-                var tournamentTeams = await _pandaApi.GetAsync<List<Team>>(teamsRequest);
 
 
+                var task =  _pandaApi.GetAsync<List<Team>>(teamsRequest);
+
+                tasks.Add(task);
+            }
+
+            var tournamentTeamsList = await Task.WhenAll(tasks);
+
+            foreach (var tournamentTeams in tournamentTeamsList)
+            {
                 foreach (var team in tournamentTeams)
                 {
                     teams.Add(team);
                 }
             }
 
+
             var orderderTeams = teams.OrderBy(t => t.Name).GroupBy(t => t.Id).Select(t => t.First());
 
-
-            var t2 = teams.AsQueryable();
 
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
             var onePageOfTeams = orderderTeams.ToPagedList(pageNumber, 10);

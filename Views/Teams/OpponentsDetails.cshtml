@@ -5,7 +5,7 @@
 }
 <br />
 <div class="row d-flex justify-content-center">
-    <h1 class="text-center w-100">Teams Details</h1>
+    <h1 class="text-center w-100 text-light">Teams Details</h1>
 </div>
 <br />
 
@@ -19,13 +19,13 @@
         @if (Model.First() == team)
         {
             <div class="col-1">
-                <span  style="font-size: 60px;">VS</span>
+                <span class="text-light" style="font-size: 60px;">VS</span>
             </div>
         }
     }
 </div>
 <br />
 <div class="row d-flex justify-content-center">
-    <a asp-action="Index" asp-controller="Home" class="btn btn-primary" style="width: 150px;">Back</a>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-info" style="width: 150px;">Back</a>
 </div>
 

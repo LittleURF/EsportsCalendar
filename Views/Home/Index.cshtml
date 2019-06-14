@@ -7,8 +7,8 @@
 <br />
 
 <div class="row d-flex justify-content-center">
-    <h1 class="text-center">Welcome to Esports Calendar!</h1>
-    <p class="text-center">Here you can check every incoming Esport event of LoL, Dota 2, CS:GO and Overwatch!</p>
+    <h1 class="text-center text-light display-3">Welcome to Esports Calendar!</h1>
+    <p class="text-center text-light" style="font-size: 120%;">Here you can check every incoming Esport event of LoL, Dota 2, CS:GO and Overwatch!</p>
 </div>
 
 <div class="row d-flex justify-content-center">
@@ -17,15 +17,15 @@
 <div class="row d-flex justify-content-center">
     <div class="col-sm-12 col-lg-9">
         <div class="row d-flex justify-content-center">
-            <a asp-route-game="@ViewBag.Game" asp-route-timePeriod="past" class="btn btn-info btn-sharp col-sm-4 col-lg-3 @(ViewBag.TimePeriod == "past" ? "active" : "")" role="button">Past Matches</a>
-            <a asp-route-game="@ViewBag.Game" asp-route-timePeriod="upcoming" class="btn btn-info btn-sharp col-sm-4 col-lg-3 @(ViewBag.TimePeriod == "upcoming" || ViewBag.TimePeriod == null ? "active" : "")" role="button">Upcoming Matches</a>
+            <a asp-route-game="@ViewBag.Game" asp-route-timePeriod="past" class="btn btn-info btn-matchtable btn-sharp col-sm-4 col-lg-3 @(ViewBag.TimePeriod == "past" ? "active" : "")" role="button">Past Matches</a>
+            <a asp-route-game="@ViewBag.Game" asp-route-timePeriod="upcoming" class="btn btn-info btn-matchtable  btn-sharp col-sm-4 col-lg-3 @(ViewBag.TimePeriod == "upcoming" || ViewBag.TimePeriod == null ? "active" : "")" role="button">Upcoming Matches</a>
         </div>
         <div class="row d-flex justify-content-between align-content-stretch">
-            <a asp-route-game="" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-1 col-lg-1 @(ViewBag.Game == null ? "active" : "")" role="button">All</a>
-            <a asp-route-game="lol" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-4 col-lg-3 @(ViewBag.Game == "lol" ? "active" : "")" role="button">League of Legends</a>
-            <a asp-route-game="dota2" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-2 col-lg-2 @(ViewBag.Game == "dota2" ? "active" : "")" role="button">Dota 2</a>
-            <a asp-route-game="csgo" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-2 col-lg-3 @(ViewBag.Game == "csgo" ? "active" : "")" role="button">CS:GO</a>
-            <a asp-route-game="ow" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-primary btn-matchtable btn-sharp col-sm-3 col-lg-3 @(ViewBag.Game == "ow" ? "active" : "")" role="button">Overwatch</a>
+            <a asp-route-game="" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-dark btn-matchtable btn-sharp col-sm-1 col-lg-1 @(ViewBag.Game == null ? "active" : "")" role="button">All</a>
+            <a asp-route-game="lol" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-dark btn-matchtable btn-sharp col-sm-4 col-lg-3 @(ViewBag.Game == "lol" ? "active" : "")" role="button">League of Legends</a>
+            <a asp-route-game="dota2" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-dark btn-matchtable btn-sharp col-sm-2 col-lg-2 @(ViewBag.Game == "dota2" ? "active" : "")" role="button">Dota 2</a>
+            <a asp-route-game="csgo" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-dark btn-matchtable btn-sharp col-sm-2 col-lg-3 @(ViewBag.Game == "csgo" ? "active" : "")" role="button">CS:GO</a>
+            <a asp-route-game="ow" asp-route-timePeriod="@ViewBag.TimePeriod" class="btn btn-dark btn-matchtable btn-sharp col-sm-3 col-lg-3 @(ViewBag.Game == "ow" ? "active" : "")" role="button">Overwatch</a>
         </div>
         <div class="row">
             <table class="table table-striped" style="background-color: ghostwhite;">
@@ -48,11 +48,11 @@
                         <div style="width: 60px; font-size: 120%;">
                             @if (match.Opponents.Count() == 2 && match.Opponents[0].Type == "Team" && match.Opponents[1].Type == "Team")
                             {
-                                <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-route-game="@ViewBag.Game" asp-route-timePeriod="@ViewBag.TimePeriod" asp-controller="teams" asp-action="OpponentsDetails"><i class="fas fa-info-circle fa-lg"></i></a>
+                                <a asp-route-teamId1="@match.Opponents[0].Opponent.Id" asp-route-teamId2="@match.Opponents[1].Opponent.Id" asp-route-game="@ViewBag.Game" asp-route-timePeriod="@ViewBag.TimePeriod" asp-controller="teams" asp-action="OpponentsDetails"><i class="fas fa-info-circle text-info" ></i></a>
                             }
                             else
                             {
-                                <i class="fas fa-info-circle fa-lg" style="opacity: 0.3;"></i>
+                                <i class="fas fa-info-circle" style="opacity: 0.3;"></i>
                             }
                         </div>
                         <div>
@@ -83,7 +83,7 @@
     new X.PagedList.Mvc.Common.PagedListRenderOptionsBase {
         UlElementClasses = new string[] { " pagination justify-content-center" },
         LiElementClasses = new string[] { "page-item" },
-        PageClasses = new string[] { "page-link" }
+        PageClasses = new string[] { "page-link text-dark" }
     })
     </div>
 </div>

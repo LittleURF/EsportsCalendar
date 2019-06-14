@@ -12,6 +12,8 @@ using X.PagedList;
 /*
  * Getting the team list takes too many requests, its super slow, try to fix it
  * 
+ * If its gonna stay this slow you should use a loading screen, loading circle on the div, anything
+ * 
  * Make the matches table NAV menu a dropdown
  * */
 
